@@ -25,7 +25,7 @@ async function bootstrap() {
         return;
       }
 
-      callback(new Error(`CORS blocked for origin: ${origin}`), false);
+      callback(null, false);
     },
     credentials: true,
   });
