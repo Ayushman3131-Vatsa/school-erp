@@ -43,8 +43,6 @@ export class EmailService implements OnModuleInit {
       console.error(`[DEBUG SENDGRID] FAILURE! Error details:`, JSON.stringify(error.response?.body, null, 2));
       throw error;
     }
-      this.logger.error(`Error in sendEmail for ${to}: ${error.message}`);
-    }
   }
 
   // --- Specialized Template Builders ---
