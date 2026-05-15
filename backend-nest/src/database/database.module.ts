@@ -55,13 +55,9 @@ const ALL_ENTITIES = [
         password: config.get('DB_PASSWORD', 'postgres'),
         database: config.get('DB_NAME', 'school_erp'),
         entities: ALL_ENTITIES,
-        // Auto-create/update tables in dev; run migrations in prod
-        synchronize: config.get('NODE_ENV') !== 'production',
-        logging: config.get('NODE_ENV') === 'development',
-        ssl:
-          config.get('NODE_ENV') === 'production'
-            ? { rejectUnauthorized: false }
-            : false,
+        synchronize: process.env.DB_SYNC === 'true' || process.env.NODE_ENV !== 'production',
+        logging: process.env.NODE_ENV === 'development',
+        ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
       }),
     }),
   ],
